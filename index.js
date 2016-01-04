@@ -58,7 +58,7 @@ module.exports = function (_options) {
 
 			// parse the svg and extract dimensions
 			xml2js.parseString(String(file.contents), {strict: false, attrkey:'ATTR', attrNameProcessors:[attrToLowerCase]}, function (err, result) {
-				if (err) throw err; 
+				if (err) throw err;
 				var hasWidthHeightAttr = result.SVG.ATTR['width'] && result.SVG.ATTR['height'],
 					width,
 					height;
@@ -73,7 +73,6 @@ module.exports = function (_options) {
 				var iteration = 0;
 
 				var inlineSvg = encodeURIComponent(String(file.contents)).replace(new RegExp('(stroke|fill+)%3D%22%23?((?:.(?!%23?\s+(?:\S+)%3D|[%3E%22]))+.)%22?', 'gim'), function(match, p1, p2) {
-					console.log('p2', p2);
 					return p1 + '%3D%22%23#{color' + ++iteration + '}%22';
 				});
 
