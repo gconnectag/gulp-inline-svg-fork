@@ -70,16 +70,10 @@ module.exports = function (_options) {
 					height = result.SVG.ATTR['viewbox'].toString().replace(/^\d+\s\d+\s(\d+\.?[\d])\s(\d+\.?[\d])/, "$2");
 				}
 
-				var iteration = 0;
-
-				var inlineSvg = encodeURIComponent(String(file.contents)).replace(new RegExp('(stroke|fill+)%3D%22%23?((?:.(?!%23?\s+(?:\S+)%3D|[%3E%22]))+.)%22?', 'gim'), function(match, p1, p2) {
-					return p1 + '%3D%22%23#{color' + ++iteration + '}%22';
-				});
-
 				// store this svg data
 				svgs.push({
 					name: path.basename(file.path, '.svg'),
-					inline: 'data:image/svg+xml,' + inlineSvg,
+					inline: 'data:image/svg+xml,' + encodeURIComponent(String(file.contents)),
 					width: parseInt(width) + 'px',
 					height: parseInt(height) + 'px'
 				});

@@ -1,6 +1,6 @@
 {
   "name": "gulp-inline-svg",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A gulp plugin to use inline SVG as background-images",
   "keywords": [
     "gulpplugin, gulp, svg, inline"
