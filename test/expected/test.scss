@@ -1,4 +1,4 @@
-$test: 'data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22350.471%22%20height%3D%22350.471%22%3E%3Cg%20stroke%3D%22%23#{color1}%22%20stroke-width%3D%221.9%22%3E%3Cpath%20d%3D%22M.95.95h234.286v225.714H.95z%22%2F%3E%3Cpath%20d%3D%22M349.52%20236.664c0%2062.33-50.526%20112.857-112.856%20112.857-62.33%200-112.857-50.526-112.857-112.856%200-62.33%2050.528-112.857%20112.857-112.857%2062.33%200%20112.857%2050.528%20112.857%20112.857z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A' 350px 350px;
+$test: "data:image/svg+xml,data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350.471' height='350.471'%3E%3Cg stroke='%230091d4' stroke-width='1.9'%3E%3Cpath d='M.95.95h234.286v225.714H.95z'/%3E%3Cpath d='M349.52 236.664c0 62.33-50.526 112.857-112.856 112.857-62.33 0-112.857-50.526-112.857-112.856 0-62.33 50.528-112.857 112.857-112.857 62.33 0 112.857 50.528 112.857 112.857z'/%3E%3C/g%3E%3C/svg%3E" 350px 350px;
 
 @mixin inline-svg($name) {
 	background: transparent url(nth($name, 1)) no-repeat 50% 50%;
