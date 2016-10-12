@@ -4,7 +4,7 @@
 This plugin takes a couple of SVG files and provides them inside a Sass mixin as inlined background-images. By doing so, you can use them without having to touch your markup.
 
 ## Compatibility
-The inlined SVG gets URL encoded, so it is save to use starting with IE9.
+The inlined SVG gets URL encoded, so it's safe to use starting with IE9.
 
 ## Important notes
 The generated mixin contains width and height values for each SVG. Those values are taken from the width and height attribute inside the SVG. If it does not provide them, they will be set to 0px. You can still overwrite them in your CSS.
@@ -27,7 +27,7 @@ gulp.task('inline-svg', function() {
 	return gulp.src("images/svgs/**/*.svg")
 		.pipe(svgMin())
 		.pipe(inlineSvg())
-		.pipe(gulp.dest("sass"));	
+		.pipe(gulp.dest("sass"));
 });
 ```
 
