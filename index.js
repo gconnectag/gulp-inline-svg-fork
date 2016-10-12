@@ -73,7 +73,7 @@ module.exports = function (_options) {
 				// store this svg data
 				svgs.push({
 					name: path.basename(file.path, '.svg'),
-					inline: 'data:image/svg+xml,' + encodeURIComponent(String(file.contents)),
+					inline: 'data:image/svg+xml,' + urlEncode(file.contents),
 					width: parseInt(width) + 'px',
 					height: parseInt(height) + 'px'
 				});
@@ -88,6 +88,17 @@ module.exports = function (_options) {
 		}
 
 		return callback();
+	}
+
+	function urlEncode(content) {
+		content = content.toString('utf8');
+		content = content.replace(/"/g, "'");
+		content = content.replace(/\s+/g, " ");
+		content = content.replace(/[{}\|\\\^~\[\]`"<>#%]/g, function(match) {
+			return '%'+match[0].charCodeAt(0).toString(16).toUpperCase();
+		});
+
+		return 'data:image/svg+xml;charset=utf8,' + content.trim();
 	}
 
 	return through.obj(inlineSvg);
