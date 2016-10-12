@@ -73,7 +73,7 @@ module.exports = function (_options) {
 				// store this svg data
 				svgs.push({
 					name: path.basename(file.path, '.svg'),
-					inline: 'data:image/svg+xml,' + urlEncode(file.contents),
+					inline: urlEncode(file.contents),
 					width: parseInt(width) + 'px',
 					height: parseInt(height) + 'px'
 				});
