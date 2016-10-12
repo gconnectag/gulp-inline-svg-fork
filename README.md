@@ -1,7 +1,7 @@
 # gulp-inline-svg
 > inline-svg plugin for [gulp](https://github.com/wearefractal/gulp)
 
-This plugin takes a couple of SVG files and provides them inside a Sass mixin as inlined background-images. By doing so, you can use them without having to touch you Markup.
+This plugin takes a couple of SVG files and provides them inside a Sass mixin as inlined background-images. By doing so, you can use them without having to touch your markup.
 
 ## Compatibility
 The inlined SVG gets URL encoded, so it is save to use starting with IE9.
@@ -11,7 +11,7 @@ The generated mixin contains width and height values for each SVG. Those values 
 
 ## Usage
 
-First, install `gulp-inline-svg as a development dependency:
+First, install `gulp-inline-svg` as a development dependency:
 
 ```shell
 npm install --save-dev gulp-inline-svg
@@ -23,10 +23,12 @@ Then, add it to your `gulpfile.js`. I'd recommend to use it in conjunction with 
 var inlineSvg = require("gulp-inline-svg"),
 	svgMin = require('gulp-svgmin');
 
-gulp.src("images/svgs/**/*.svg")
-	.pipe(svgMin())
-	.pipe(inlineSvg())
-	.pipe(gulp.dest("sass"));
+gulp.task('inline-svg', function() {
+	return gulp.src("images/svgs/**/*.svg")
+		.pipe(svgMin())
+		.pipe(inlineSvg())
+		.pipe(gulp.dest("sass"));	
+});
 ```
 
 This will create a _svg.scss file inside your 'sass' folder.
@@ -60,7 +62,7 @@ The _svg.scss file will provide you with the following mixins and functions:
 ```
 
 ## Configuration
-If you want wo customize the default configuration, you can pass an options object to the task function:
+If you want to customize the default configuration, you can pass an options object to the task function:
 
 ```javascript
 gulp.src("images/svgs/**/*.svg")
