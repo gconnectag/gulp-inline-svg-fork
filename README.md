@@ -23,10 +23,12 @@ Then, add it to your `gulpfile.js`. I'd recommend to use it in conjunction with 
 var inlineSvg = require("gulp-inline-svg"),
 	svgMin = require('gulp-svgmin');
 
-gulp.src("images/svgs/**/*.svg")
-	.pipe(svgMin())
-	.pipe(inlineSvg())
-	.pipe(gulp.dest("sass"));
+gulp.task('inline-svg', function() {
+	return gulp.src("images/svgs/**/*.svg")
+		.pipe(svgMin())
+		.pipe(inlineSvg())
+		.pipe(gulp.dest("sass"));	
+})
 ```
 
 This will create a _svg.scss file inside your 'sass' folder.
