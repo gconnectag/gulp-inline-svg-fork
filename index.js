@@ -14,7 +14,9 @@ module.exports = function (_options) {
 		svgs = [],
 		options = {
 			filename: '_svg.scss',
-			template: __dirname + '/template.mustache'
+			template: __dirname + '/template.mustache',
+			context: {},
+			interceptor: null
 		};
 
 		// merge options
@@ -70,16 +72,22 @@ module.exports = function (_options) {
 					height = result.SVG.ATTR['viewbox'].toString().replace(/^\d+\s\d+\s(\d+\.?[\d])\s(\d+\.?[\d])/, "$2");
 				}
 
-				// store this svg data
-				svgs.push({
+				var svgData = {
 					name: path.basename(file.path, '.svg'),
 					inline: urlEncode(file.contents),
 					width: parseInt(width) + 'px',
-					height: parseInt(height) + 'px'
-				});
+					height: parseInt(height) + 'px',
+					dimensions: {
+						width: parseInt(width),
+						height: parseInt(height)
+					}
+				};
+
+				// store this svg data
+				svgs.push(_.isFunction(options.interceptor) ? _.extend({}, svgData, options.interceptor(svgData, file) || svgData) : svgData);
 
 				// update template
-				files[file.base].contents = new Buffer(mustache.render(template, {svgs: svgs}));
+				files[file.base].contents = new Buffer(mustache.render(template, _.extend({}, options.context, { svgs: svgs })));
 
 				// send new file back to stream
 				this.push(files[file.base]);
