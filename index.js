@@ -75,11 +75,11 @@ module.exports = function (_options) {
 				var svgData = {
 					name: path.basename(file.path, '.svg'),
 					inline: urlEncode(file.contents),
-					width: parseInt(width) + 'px',
-					height: parseInt(height) + 'px',
+					width: parseFloat(width) + 'px',
+					height: parseFloat(height) + 'px',
 					dimensions: {
-						width: parseInt(width),
-						height: parseInt(height)
+						width: parseFloat(width),
+						height: parseFloat(height)
 					}
 				};
 
